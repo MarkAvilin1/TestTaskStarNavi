@@ -1,14 +1,16 @@
 from django.contrib.auth.models import AbstractUser
-from rest_framework.authtoken.admin import User
 from django.db import models
 
 
-class Users(models.Model):
+class Users(AbstractUser):
+    last_name = None
+    first_name = None
+    # email = None
+    user_permissions = '__all__'
     name = models.CharField(max_length=100)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.username
 
 
 class Posts(models.Model):
@@ -17,7 +19,7 @@ class Posts(models.Model):
     userid = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 
-class LikesStatus(models.Model):
+class LikeStatus(models.Model):
     like = models.IntegerField(default=0)
     dislike = models.IntegerField(default=0)
     ls_date = models.DateTimeField(auto_now_add=True)

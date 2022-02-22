@@ -3,4 +3,4 @@ from .models import *
 
 admin.register(Users)
 admin.register(Posts)
-admin.register(LikesStatus)
+admin.register(LikeStatus)
