@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
 
-admin.register(Users)
-admin.register(Posts)
-admin.register(LikeStatus)
+admin.site.register(Posts)
+admin.site.register(LikeStatus)

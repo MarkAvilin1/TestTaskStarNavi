@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'site_app.apps.SiteAppConfig',
+    'account.apps.AccountConfig',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +111,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-AUTH_USER_MODEL = 'site_app.Users'
+# AUTH_USER_MODEL = 'site_app.Users'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -130,6 +132,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
     ]
 }
 
