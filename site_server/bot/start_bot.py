@@ -6,20 +6,20 @@ config.read('botconfig.ini')
 
 if __name__ == "__main__":
     number_of_users = config['MAIN']['NUMBER_OF_USERS']
-    max_posts_per_user = config['MAIN']['MAX_POSTS_PER_USER']
-    max_likes_per_user = config['MAIN']['MAX_LIKES_PER_USER']
+    max_user_posts = config['MAIN']['MAX_USER_POSTS']
+    max_user_likes = config['MAIN']['MAX_USER_LIKES']
     url = config['MAIN']['URL']
-    bot = Bot(max_posts_per_user=max_posts_per_user,
-              max_likes_per_user=max_likes_per_user,
-              number_of_users=number_of_users,
+    bot = Bot(number_of_users=number_of_users,
+              max_user_posts=max_user_posts,
+              max_user_likes=max_user_likes,
               url=url)
     posts_counter = 0
-    like_unlike_actions_counter = 0
+    like_dislike_counter = 0
     for _ in range(int(number_of_users)):
-        auth_data = bot.create_user()
-        posts_counter += bot.create_posts(auth_data=auth_data)
-        like_unlike_actions_counter += bot.create_likes(auth_data=auth_data)
+        auth_data = bot.register_user()
+        posts_counter += bot.get_posts(auth_data=auth_data)
+        like_dislike_counter += bot.get_like_status(auth_data=auth_data)
     print(
-        f"---> {number_of_users} users has created\n"
-        f"---> {posts_counter} posts has created\n"
-        f"---> {like_unlike_actions_counter} actions has done")
+        f"@===> {number_of_users} users have created\n"
+        f"@===> {posts_counter} posts have created\n"
+        f"@===> {like_dislike_counter} likes or dislike have put")

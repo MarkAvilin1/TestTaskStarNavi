@@ -1,16 +1,14 @@
+from .serializers import UserSerializer, RegisterSerializer, UserSerializerActivity
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
-from django.contrib.auth.models import User
-
-from .serializers import UserSerializer, RegisterSerializer, UserSerializerActivity
 from rest_framework import generics, permissions
 from rest_framework.response import Response
+from django.contrib.auth.models import User
+from django.contrib.auth import login
 from knox.models import AuthToken
 
-from django.contrib.auth import login
 
-
-# Register API
+# Register users
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
@@ -24,6 +22,7 @@ class RegisterAPI(generics.GenericAPIView):
         })
 
 
+# Login users
 class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
 
@@ -35,6 +34,7 @@ class LoginAPI(KnoxLoginView):
         return super(LoginAPI, self).post(request, format=None)
 
 
+# Get user's last activity
 class UserLastActivity(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
