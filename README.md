@@ -1,7 +1,7 @@
 # API created by Django REST_FRAMEWORK
 
 Basic models:
-● User
+● User  
 ● Post (always made by a user)
 
 Basic Features:
