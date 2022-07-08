@@ -4,19 +4,19 @@ Basic models:
 ● User  
 ● Post (always made by a user)
 
-Basic Features:
-● user signup
-● user login
-● post creation
-● post like
-● post unlike
-● analytics about how many likes was made. Example url
+Basic Features:  
+● user signup  
+● user login  
+● post creation  
+● post like  
+● post unlike  
+● analytics about how many likes was made. Example url  
 /api/analytics/?date_from=2020-02-02&date_to=2020-02-15 . API should return analytics aggregated
-by day.
+by day.  
 ● user activity an endpoint which will show when user was login last time and when he mades a last
 request to the service.
 
-Links:
+Links:  
 1. Admin login 
 >> http://127.0.0.1:8000/admin/
 2. Register new user:
